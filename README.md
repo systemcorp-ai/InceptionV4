@@ -8,7 +8,7 @@
 
 Keras implementation of InceptionV4 paper: http://arxiv.org/pdf/1602.07261v1.pdf
 
-
+[![Build Status](https://cdn1.imggmi.com/uploads/2019/8/10/6e1570c4ee76b6fc2a0d5d4a282b4117-full.png)]()
 
 
 
@@ -136,9 +136,6 @@ Make sure to run it as an administrator.
 
 
 
-### Thanks to @titu1994 for initial implementation.
-
-```https://github.com/titu1994/Inception-v4```
 
 License
 ----
