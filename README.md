@@ -17,6 +17,7 @@ Keras implementation of InceptionV4 paper: http://arxiv.org/pdf/1602.07261v1.pdf
 - Multi-GPU support
 - Comes with IPYNB file
 - Made UX Better
+- Implemented Tensorboard
 
 
 ### Installation
@@ -101,6 +102,31 @@ tail -f nohup.out
 ```sh
 cat nohup.out
 ```
+
+## Tensorboard
+
+Tensorboard will create timestamp directory in ```logs``` folder, with the logfile inside.
+
+Run ```tensorboard --logdir logs/'timestamp'/'logfile' to see execute the tensorboard.
+
+- Little trick
+
+In case you're using Google Colab, Cloud or anything that is not running in your local computer, and 
+you want a shortcut to update the tensorboard in every period, here's a little script for it:
+
+```sh
+import subprocess
+from time import sleep
+
+while True:
+  subprocess.run('scp username@ip_address:~/'path to the logfile' 'path to local folder', shell=True)
+  sleep(5)
+
+```
+The integer in sleep() function is number of seconds. Change it according to your preferences.
+Run this script in the background, with tensorboard executed, and it'll download the logfile and update it every once in a while.
+Tensorboard will update graphs by itself.
+
 
 ### Must-to-know
 
