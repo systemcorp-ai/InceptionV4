@@ -24,10 +24,11 @@ import subprocess
 from time import time
 from keras.callbacks import TensorBoard
 
-# construct the argument parser and parse the arguments
+
+# Arguments
+
 ap = argparse.ArgumentParser()
-#ap.add_argument("-e", "--encodings", required=True,
-#	help="path to serialized db of facial encodings")
+
 ap.add_argument("-g", "--gpus", default=1, type=int,
 	help="# of available GPUs")
 ap.add_argument("-train", "--train_dir", type=str, default="train/",
@@ -43,8 +44,14 @@ ap.add_argument("-log", "--log_dir", type=str, default="logs/")
 args = vars(ap.parse_args())
 
 
+# Check whether continue training from pretrained model or not
+
 if str(args['checkpoint']) != 'no':
     checkpoint_path = str(args['checkpoint'])
+    check = True
+else:
+    check = False
+
 
 
 def conv_block(x, nb_filter, nb_row, nb_col, border_mode='same', subsample=(1, 1), bias=False):
@@ -60,8 +67,10 @@ def conv_block(x, nb_filter, nb_row, nb_col, border_mode='same', subsample=(1, 1
 
 
 def inception_stem(input):
+
     channel_axis = -1
-    # Input Shape is 299 x 299 x 3 (th) or 3 x 299 x 299 (th)
+
+    # Shape 299 x 299 x 3 
     x = conv_block(input, 32, 3, 3, subsample=(2, 2), border_mode='valid')
     x = conv_block(x, 32, 3, 3, border_mode='valid')
     x = conv_block(x, 64, 3, 3)
@@ -69,7 +78,6 @@ def inception_stem(input):
     x1 = MaxPooling2D((3, 3), strides=(2, 2), border_mode='valid')(x)
     x2 = conv_block(x, 96, 3, 3, subsample=(2, 2), border_mode='valid')
     x = concatenate([x1, x2], axis=channel_axis)
-    #x = merge([x1, x2], mode='concat', concat_axis=channel_axis)
 
     x1 = conv_block(x, 64, 1, 1)
     x1 = conv_block(x1, 96, 3, 3, border_mode='valid')
@@ -78,14 +86,10 @@ def inception_stem(input):
     x2 = conv_block(x2, 64, 1, 7)
     x2 = conv_block(x2, 64, 7, 1)
     x2 = conv_block(x2, 96, 3, 3, border_mode='valid')
-
-    #x = merge([x1, x2], mode='concat', concat_axis=channel_axis)
     x = concatenate([x1, x2], axis=channel_axis)
 
     x1 = conv_block(x, 192, 3, 3, subsample=(2, 2), border_mode='valid')
     x2 = MaxPooling2D((3, 3), strides=(2, 2), border_mode='valid')(x)
-
-    #x = merge([x1, x2], mode='concat', concat_axis=channel_axis)
     x = concatenate([x1, x2], axis=channel_axis)
 
     return x
@@ -106,7 +110,6 @@ def inception_A(input):
     a4 = AveragePooling2D((3, 3), strides=(1, 1), border_mode='same')(input)
     a4 = conv_block(a4, 96, 1, 1)
 
-   # m = merge([a1, a2, a3, a4], mode='concat', concat_axis=channel_axis)
     m = concatenate([a1, a2, a3, a4], axis=channel_axis)
 
     return m
@@ -130,7 +133,6 @@ def inception_B(input):
     b4 = AveragePooling2D((3, 3), strides=(1, 1), border_mode='same')(input)
     b4 = conv_block(b4, 128, 1, 1)
 
-    #m = merge([b1, b2, b3, b4], mode='concat', concat_axis=channel_axis)
     m = concatenate([b1, b2, b3, b4], axis=channel_axis)
 
     return m
@@ -144,7 +146,7 @@ def inception_C(input):
     c2 = conv_block(input, 384, 1, 1)
     c2_1 = conv_block(c2, 256, 1, 3)
     c2_2 = conv_block(c2, 256, 3, 1)
-   # c2 = merge([c2_1, c2_2], mode='concat', concat_axis=channel_axis)
+
     c2 = concatenate([c2_1, c2_2], axis=channel_axis)
 
 
@@ -153,13 +155,12 @@ def inception_C(input):
     c3 = conv_block(c3, 512, 1, 3)
     c3_1 = conv_block(c3, 256, 1, 3)
     c3_2 = conv_block(c3, 256, 3, 1)
-    #c3 = merge([c3_1, c3_2], mode='concat', concat_axis=channel_axis)
+
     c3 = concatenate([c3_1, c3_2], axis=channel_axis)
 
     c4 = AveragePooling2D((3, 3), strides=(1, 1), border_mode='same')(input)
     c4 = conv_block(c4, 256, 1, 1)
 
-   # m = merge([c1, c2, c3, c4], mode='concat', concat_axis=channel_axis)
     m = concatenate([c1, c2, c3, c4], axis=channel_axis)
 
     return m
@@ -176,7 +177,6 @@ def reduction_A(input):
 
     r3 = MaxPooling2D((3, 3), strides=(2, 2), border_mode='valid')(input)
 
-    #m = merge([r1, r2, r3], mode='concat', concat_axis=channel_axis)
     m = concatenate([r1, r2, r3], axis=channel_axis)
 
     return m
@@ -195,18 +195,12 @@ def reduction_B(input):
 
     r3 = MaxPooling2D((3, 3), strides=(2, 2), border_mode='valid')(input)
 
-    #m = merge([r1, r2, r3], mode='concat', concat_axis=channel_axis)
     m = concatenate([r1, r2, r3], axis=channel_axis)
 
     return m
 
 
-def create_inception_v4(nb_classes=int(args["num_classes"]), load_weights=False):
-    '''
-    Creates a inception v4 network
-    :param nb_classes: number of classes.txt
-    :return: Keras Model with 1 input and 1 output
-    '''
+def create_inception_v4(nb_classes=int(args["num_classes"]), load_weights=check):
 
     init = Input((299,299, 3))
 
@@ -233,7 +227,7 @@ def create_inception_v4(nb_classes=int(args["num_classes"]), load_weights=False)
     # Average Pooling
     x = AveragePooling2D((8, 8))(x)
 
-    # Dropout
+    # Dropout - Use 0.2, as mentioned in official paper. 
     x = Dropout(0.2)(x)
     x = Flatten()(x)
 
@@ -242,7 +236,7 @@ def create_inception_v4(nb_classes=int(args["num_classes"]), load_weights=False)
 
     model = Model(init, out, name='Inception-v4')
 
-    if str(args['checkpoint']) != 'no':
+    if check == True:
         weights = checkpoint_path
         model.load_weights(weights)
         print("Model weights loaded.")
@@ -262,7 +256,7 @@ subprocess.run('mkdir inceptionv4_checkpoints', shell=True)
 print('-----------------------------')
 print('$ # of GPUs - ', str(args['gpus']))
 print('$ # of Classes - ', str(args['num_classes']))
-print('$ Learning rate - ', str(args['gpus']))
+print('$ Learning rate - ', str(args['learning_rate']))
 print('$ Epochs ', str(args['epochs']))
 print('-----------------------------')
 

@@ -145,10 +145,23 @@ Make sure to run it as an administrator.
 ![Inception](https://i.ibb.co/mT3cJLR/htop.png?style=centerme)
 
 
+### Dropout
+
+Use ```0.2``` dropout, as mentioned in official paper. But, in case you're testing it on small dataset, and model overfits, 
+you can increase dropout up to 0.8.
+We've tested 0.8 dropout on 600 images, and it gave satisfying results for this size of dataset.
 
 # Output
 
 ```sh
+
+-----------------------------
+$ # of GPUs - 8
+$ # of Classes - 20
+$ Learning Rate - 1e-3
+$ Epochs - 1000
+-----------------------------
+
   1/500 [..............................] - ETA: 4:01 - loss: 2.7470 - acc: 0.3125
   2/500 [..............................] - ETA: 4:04 - loss: 2.4298 - acc: 0.4062
   3/500 [..............................] - ETA: 4:03 - loss: 2.3062 - acc: 0.4167
