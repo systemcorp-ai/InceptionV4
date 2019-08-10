@@ -1,7 +1,6 @@
 # InceptionV4
 
-[![N|Solid](attributes/systemcorp.svg)](https://www.systemcorp.ai)
-
+![InceptionV4](./attributes/systemcorp.svg)
 
 
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)]()
