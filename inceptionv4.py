@@ -26,11 +26,11 @@ import subprocess
 ap = argparse.ArgumentParser()
 #ap.add_argument("-e", "--encodings", required=True,
 #	help="path to serialized db of facial encodings")
-ap.add_argument("-g", "--gpus", default='single', type=int,
+ap.add_argument("-g", "--gpus", default=1, type=int,
 	help="# of available GPUs")
 ap.add_argument("-train", "--train_dir", type=str, default="train/",
     help="train directory")
-ap.add_argument("-val", "--val", type=str, default="val/",
+ap.add_argument("-val", "--val_dir", type=str, default="val/",
 	help="val directory")
 ap.add_argument("-c", "--checkpoint", type=str, default="no")
 ap.add_argument("-classes", "--num_classes", type=int, required=True)

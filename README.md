@@ -68,7 +68,7 @@ $ pip install -r requirements.txt
 # Example
 
 ```sh
-python3 InceptionV4.py -g 8 -train train -val val -classes 20 -epochs 100 -steps 500
+python3 inceptionv4.py -g 8 -train train -val val -classes 20 -epochs 100 -steps 500
 ```
 
 ## A little UX
@@ -79,7 +79,7 @@ use Nohup for it. Nohup basically runs the code in background, and you can reach
 - Example to run
 
 ```sh
-nohup python3 InceptionV4.py -g 8 -train train -val val -classes 20 -epochs 100 -steps 500 &
+nohup python3 inceptionv4.py -g 8 -train train -val val -classes 20 -epochs 100 -steps 500 &
 ```
 The Nohup will create ```nohup.out``` file.
 
