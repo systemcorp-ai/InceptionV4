@@ -198,6 +198,28 @@ $ Epochs - 1000
 - Luka Chkhetiani - @deepconsc - Lchkhetiani@systemcorp.ai
 - Levan Bezhanidze - @bejanidze - Lbezhanidze@systemcorp.ai
 
+
+# Citation
+
+```sh
+@article{DBLP:journals/corr/SzegedyIV16,
+  author    = {Christian Szegedy and
+               Sergey Ioffe and
+               Vincent Vanhoucke},
+  title     = {Inception-v4, Inception-ResNet and the Impact of Residual Connections
+               on Learning},
+  journal   = {CoRR},
+  volume    = {abs/1602.07261},
+  year      = {2016},
+  url       = {http://arxiv.org/abs/1602.07261},
+  archivePrefix = {arXiv},
+  eprint    = {1602.07261},
+  timestamp = {Mon, 13 Aug 2018 16:48:39 +0200},
+  biburl    = {https://dblp.org/rec/bib/journals/corr/SzegedyIV16},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+```
+
 License
 ----
 
