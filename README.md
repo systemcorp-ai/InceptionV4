@@ -60,7 +60,7 @@ $ pip install -r requirements.txt
 ```
 - ### Learning Rate
 ```sh
-"-lr", "--learning_rate", type=str, default=1e-3
+"-lr", "--learning_rate", type=fstr, default='1e-3'
 ```
 
 
