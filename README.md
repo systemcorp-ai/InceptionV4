@@ -8,7 +8,7 @@
 
 Keras implementation of InceptionV4 paper: http://arxiv.org/pdf/1602.07261v1.pdf
 
-[![Build Status](https://cdn3.imggmi.com/uploads/2019/8/10/6e1570c4ee76b6fc2a0d5d4a282b4117-full.png)]()
+[![Build Status](https://i.ibb.co/xDV8N0P/incept.png)]()
 
 
 
