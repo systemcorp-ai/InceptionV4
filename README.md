@@ -147,6 +147,12 @@ Make sure to run it as an administrator.
 
 ```https://github.com/titu1994/Inception-v4```
 
+
+### Contributors
+
+Luka Chkhetiani - @deepconsc - Lchkhetiani@systemcorp.ai
+Levan Bezhanidze - @bejanidze - Lbezhanidze@systemcorp.ai
+
 License
 ----
 
