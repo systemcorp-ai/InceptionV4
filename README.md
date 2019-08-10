@@ -7,7 +7,7 @@
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)]()
 
 Keras implementation of InceptionV4 paper: http://arxiv.org/pdf/1602.07261v1.pdf
-![Inception](https://i.ibb.co/MZ4ssCC/icenp.png?style=centerme)
+![InceptionV4](https://i.ibb.co/MZ4ssCC/icenp.png?style=centerme)
 
 
 
@@ -164,6 +164,11 @@ License
 ----
 
 MIT
+
+
+[//]: # (Inception InceptionV4 Keras Tensorflow InceptionV4-Keras Image Classification Google Implementation)
+
+
 
 
 
