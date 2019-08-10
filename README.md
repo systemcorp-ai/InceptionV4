@@ -1,6 +1,6 @@
 # InceptionV4
 
-![InceptionV4](./systemcorp.svg)
+[![N|Solid](../systemcorp.svg)]()
 
 
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)]()
