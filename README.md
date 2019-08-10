@@ -7,8 +7,8 @@
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)]()
 
 Keras implementation of InceptionV4 paper: http://arxiv.org/pdf/1602.07261v1.pdf
+![Inception](https://i.ibb.co/MZ4ssCC/icenp.png?style=centerme)
 
-[![Build Status](https://i.ibb.co/MZ4ssCC/icenp.png)]()
 
 
 
@@ -103,7 +103,7 @@ Make sure to run it as an administrator.
 
 - List the processes via "S", or - which processes are parent ones. The parent processes will have "R" letter as shown in image, and kill them via ```F9```, and then ```9 + Enter```.
 
-[![N|Solid](https://i.ibb.co/mT3cJLR/htop.png)]()
+![Inception](https://i.ibb.co/mT3cJLR/htop.png?style=centerme)
 
 
 
