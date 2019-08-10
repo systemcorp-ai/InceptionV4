@@ -21,6 +21,8 @@ import PIL
 import pandas
 from keras.layers import concatenate
 import subprocess
+from time import time
+from keras.callbacks import TensorBoard
 
 # construct the argument parser and parse the arguments
 ap = argparse.ArgumentParser()
@@ -37,6 +39,7 @@ ap.add_argument("-classes", "--num_classes", type=int, required=True)
 ap.add_argument("-epochs", "--epochs", type=int, default=1000)
 ap.add_argument("-steps", "--steps_per_epoch", type=int, default=500)
 ap.add_argument("-lr", "--learning_rate", type=float, default='1e-3')
+ap.add_argument("-log", "--log_dir", type=str, default="logs/")
 args = vars(ap.parse_args())
 
 
@@ -282,6 +285,7 @@ train_generator = datagen.flow_from_directory(train_dir,target_size=(299,299),cl
 val_gen = datagen.flow_from_directory(val_dir,target_size=(299,299),class_mode="categorical")
 
 mc = keras.callbacks.ModelCheckpoint("inceptionv4_checkpoints/InceptionV4.h5",save_best_only=True, save_weights_only=True)
+tensorboard = TensorBoard(log_dir="{}/{}".format(args["log_dir"], time()))
 
 model.compile(loss='categorical_crossentropy', optimizer=keras.optimizers.SGD(lr=float(args['learning_rate']), decay=1e-6, momentum=0.9, nesterov=True), metrics=["accuracy"])
-hist = model.fit_generator(train_generator,steps_per_epoch=int(args['steps_per_epoch']),epochs=int(args['epochs']),verbose=True,validation_data=val_gen,validation_steps=10,callbacks=[mc])
+hist = model.fit_generator(train_generator,steps_per_epoch=int(args['steps_per_epoch']),epochs=int(args['epochs']),verbose=True,validation_data=val_gen,validation_steps=10,callbacks=[mc, tensorboard])
