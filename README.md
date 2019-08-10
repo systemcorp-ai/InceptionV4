@@ -58,6 +58,11 @@ $ pip install -r requirements.txt
 ```sh
 "-steps", "--steps_per_epoch", type=int, default=500
 ```
+- ### Learning Rate
+```sh
+"-lr", "--learning_rate", type=str, default=1e-3
+```
+
 
 
 # Example
