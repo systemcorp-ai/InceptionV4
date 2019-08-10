@@ -1,13 +1,13 @@
 # InceptionV4
 
-[![N|Solid](./systemcorp.svg)](https://www.systemcorp.ai)
+[![N|Solid](./git/systemcorp.svg)](https://www.systemcorp.ai)
 
 
 
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)]()
 
 Keras implementation of InceptionV4 paper: http://arxiv.org/pdf/1602.07261v1.pdf
-![InceptionV4](https://i.ibb.co/MZ4ssCC/icenp.png?style=centerme)
+![InceptionV4](./.git/inception.svg)
 
 
 
