@@ -140,6 +140,10 @@ Make sure to run it as an administrator.
 - Create Google Colaboratory file
 
 
+### Special Thanks to @titu1994 for initial implementation
+
+```https://github.com/titu1994/Inception-v4```
+
 License
 ----
 
