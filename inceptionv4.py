@@ -256,6 +256,13 @@ model.summary()
 train_dir = str(args['train_dir'])
 val_dir = str(args['val_dir'])
 subprocess.run('mkdir inceptionv4_checkpoints', shell=True)
+print('-----------------------------')
+print('$ # of GPUs - ', str(args['gpus']))
+print('$ # of Classes - ', str(args['num_classes']))
+print('$ Learning rate - ', str(args['gpus']))
+print('$ Epochs ', str(args['epochs']))
+print('-----------------------------')
+
 
 sess = tf.Session(config=tf.ConfigProto(log_device_placement=True))
 
