@@ -24,6 +24,7 @@ $ cd InceptionV4
 $ pip install -r requirements.txt
 ```
 
+### Use .IPYNB file in case you're training it on Google Colaboratory
 
 
 #### Split dataset into train and validation partitions
@@ -135,7 +136,6 @@ Make sure to run it as an administrator.
 ### After finishing training, the model will save the best checkpoint in ```checkpoints``` directory.
 
 
-### Use .IPYNB file in case you're training it on Google Colaboratory
 
 
 ### Special Thanks to @titu1994 for initial implementation
