@@ -150,8 +150,8 @@ Make sure to run it as an administrator.
 
 ### Contributors
 
-Luka Chkhetiani - @deepconsc - Lchkhetiani@systemcorp.ai
-Levan Bezhanidze - @bejanidze - Lbezhanidze@systemcorp.ai
+- Luka Chkhetiani - @deepconsc - Lchkhetiani@systemcorp.ai
+- Levan Bezhanidze - @bejanidze - Lbezhanidze@systemcorp.ai
 
 License
 ----
