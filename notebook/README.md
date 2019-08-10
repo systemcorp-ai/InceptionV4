@@ -1,4 +1,4 @@
 # Jupyter Notebook 
 
-[![N|Solid](../.git/systemcorp.svg)](https://www.systemcorp.ai)
+[![N|Solid](../attributes/systemcorp.svg)](https://www.systemcorp.ai)
 
