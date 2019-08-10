@@ -132,9 +132,12 @@ Make sure to run it as an administrator.
  20/500 [>.............................] - ETA: 4:57 - loss: 2.1582 - acc: 0.4734
 ```
 
-### After finishing training, the model will save the best checkpoint.
+### After finishing training, the model will save the best checkpoint in ```checkpoints``` directory.
 
 
+### TODOS
+
+- Create Google Colaboratory file
 
 
 License
