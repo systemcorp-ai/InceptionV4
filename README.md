@@ -11,6 +11,13 @@ Keras implementation of InceptionV4 paper: http://arxiv.org/pdf/1602.07261v1.pdf
 
 
 
+### Done
+
+- Keras version update
+- Multi-GPU support
+- Comes with IPYNB file
+- Made UX Better
+
 
 ### Installation
 
