@@ -2,7 +2,7 @@ from keras.layers import Input, merge, Dropout, Dense, Flatten, Activation
 from keras.layers.convolutional import MaxPooling2D, Convolution2D, AveragePooling2D
 from keras.layers.normalization import BatchNormalization
 from keras.models import Model
-
+import argparse
 from keras import backend as K
 from keras.utils.data_utils import get_file
 from keras.utils.training_utils import multi_gpu_model
@@ -26,7 +26,7 @@ import subprocess
 ap = argparse.ArgumentParser()
 #ap.add_argument("-e", "--encodings", required=True,
 #	help="path to serialized db of facial encodings")
-ap.add_argument("-g", "--gpus", default='single', type=int
+ap.add_argument("-g", "--gpus", default='single', type=int,
 	help="# of available GPUs")
 ap.add_argument("-train", "--train_dir", type=str, default="train/",
     help="train directory")
