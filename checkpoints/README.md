@@ -1,5 +1,4 @@
-# InceptionV4
+# Checkpoints Directory
 
 [![N|Solid](../systemcorp.svg)](https://www.systemcorp.ai)
 
-### Checkpoints Directory
