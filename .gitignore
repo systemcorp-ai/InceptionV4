@@ -2,3 +2,8 @@
 systemcorp.svg
 system.svg
 .gitattributes
+/train/README.md
+/val/README.md
+/checkpoints/README.md
+
+
