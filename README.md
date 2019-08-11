@@ -150,6 +150,18 @@ Use ```0.2``` dropout, as mentioned in official paper. But, in case you're testi
 you can increase dropout up to 0.8.
 We've tested 0.8 dropout on 600 images, and it gave satisfying results for this size of dataset.
 
+
+# Keras Multi-GPU Bug Workaround
+
+Keras multi-gpu training throws error while trying to load the multi-gpu trained model. We've researched many workarounds, and we found the simpliest one by ourselves.
+
+After you finish initial training on multi-gpu support, and want to use your model to fine-tune it again, you need to do the next:
+
+- Load the multi-gpu-generated model on single gpu, with couple of steps, let's say 50
+- Let the single gpu make 50 steps and save (update) the model.
+- You're all set - You can fine-tune the single-gpu generated model on Multi-GPU support now.
+
+
 # Output
 
 ```sh

@@ -30,11 +30,11 @@ from keras.callbacks import TensorBoard
 ap = argparse.ArgumentParser()
 
 ap.add_argument("-g", "--gpus", default=1, type=int,
-	help="# of available GPUs")
+        help="# of available GPUs")
 ap.add_argument("-train", "--train_dir", type=str, default="train/",
     help="train directory")
 ap.add_argument("-val", "--val_dir", type=str, default="val/",
-	help="val directory")
+        help="val directory")
 ap.add_argument("-c", "--checkpoint", type=str, default="no")
 ap.add_argument("-classes", "--num_classes", type=int, required=True)
 ap.add_argument("-epochs", "--epochs", type=int, default=1000)
@@ -238,12 +238,12 @@ def create_inception_v4(nb_classes=int(args["num_classes"]), load_weights=check)
 
     if check == True:
         weights = checkpoint_path
-        model.load_weights(weights)
+        model.load_weights(weights, by_name=True)
         print("Model weights loaded.")
-
+ 
     return model
-
-model = create_inception_v4(load_weights=False)
+    
+model = create_inception_v4(load_weights=check)
 
 if int(args['gpus']) > 1:
     model = multi_gpu_model(model, gpus=int(args['gpus']))
@@ -280,6 +280,7 @@ val_gen = datagen.flow_from_directory(val_dir,target_size=(299,299),class_mode="
 
 mc = keras.callbacks.ModelCheckpoint("inceptionv4_checkpoints/InceptionV4.h5",save_best_only=True, save_weights_only=True)
 tensorboard = TensorBoard(log_dir="{}/{}".format(args["log_dir"], time()))
+
 
 model.compile(loss='categorical_crossentropy', optimizer=keras.optimizers.SGD(lr=float(args['learning_rate']), decay=1e-6, momentum=0.9, nesterov=True), metrics=["accuracy"])
 hist = model.fit_generator(train_generator,steps_per_epoch=int(args['steps_per_epoch']),epochs=int(args['epochs']),verbose=True,validation_data=val_gen,validation_steps=10,callbacks=[mc, tensorboard])
