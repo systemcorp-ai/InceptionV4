@@ -19,5 +19,5 @@ sklearn==0.0
 systemd-python==234
 tensorboard==1.14.0
 tensorflow-estimator==1.14.0
-tensorflow-gpu==1.13.1
+tensorflow-gpu==2.9.3
 
